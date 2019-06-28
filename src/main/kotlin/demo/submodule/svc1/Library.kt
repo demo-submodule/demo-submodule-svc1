@@ -5,7 +5,6 @@ package demo.submodule.svc1
 
 class Library {
     val lib: demo.submodule.lib.Library = demo.submodule.lib.Library()
-    val svc2: demo.submodule.svc2.Library = demo.submodule.svc2.Library()
 
     fun name(): String {
         return "svc1"
@@ -15,12 +14,24 @@ class Library {
         return "${name()} -> $message"
     }
 
-    fun helloSvc2(): String {
-        return svc2.hello(name())
-    }
-
     fun helloLib(): String {
         return lib.hello(name())
     }
 
+}
+
+class LibrarySvc2 {
+    val svc2: demo.submodule.svc2.Library = demo.submodule.svc2.Library()
+
+    fun name(): String {
+        return "svc1(svc2)"
+    }
+
+    fun hello(message: String): String {
+        return "${name()} -> $message"
+    }
+
+    fun helloLib(): String {
+        return svc2.hello(name())
+    }
 }
